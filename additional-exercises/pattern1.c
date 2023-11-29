@@ -55,3 +55,5 @@ void printingThePyramidWithNumbers(int size){
 
 
 // program for other types patterns
+
+// build the program for pascal triangle for n number entered, and build pyramid with 1 at the ends of each starge

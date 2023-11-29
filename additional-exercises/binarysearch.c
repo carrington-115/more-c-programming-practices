@@ -14,7 +14,7 @@
     then the element to be searched is found
 */
 
-void sort_with_linear_sort(int array[], int length);
+void sort_with_bubble_sort(int array[], int length);
 
 int main(void){
     int array[10] = {5, 2, 9, 1, 7, 4, 8, 3, 6, 10};
@@ -53,25 +53,45 @@ int main(void){
     int middle = length/2;
 
     // the search algorithm
+    int middle_element = array[middle];
 
-    while (true){
-        int middle_element = array[middle];
-        if (number == middle_element){
-            printf("%d found at position %d", number, middle);
-            break;
-        }
-        if (middle_element < number){
-            for (int i = middle_element; i < length; i++){
-                if (array[i] == number){
-                    printf("%d found at position %d", number, i);
+    // if middle element is the search element
+    if (middle_element == number){
+        printf("%d found at position %d", number, middle);
+
+    }
+    else if (middle_element < number){
+        while (true){
+            middle_element = array[middle]; 
+            while(middle_element != number){
+                if (middle_element == number){
+                    printf("\n%d found at position %d", number, middle);
                     break;
                 }
-                else if (array[i] < number)
+                else if (middle_element < number){
+                    middle = (length - middle)/2;
+                }
+                else if(middle_element > number)
             }
+            
         }
     }
 
 
 
     return 0;
+}
+
+void sort_with_bubble_sort(int array[]){
+    // getting the size of the array
+    int length = sizeof(array[0])/sizeof(array);
+    int i, j, swap, element;
+
+    // beginning the sorting algorithm
+    for (i = 0; i < length; i++){
+        element = array[i];
+        for (j = i+1; j < length; )
+    }
+
+
 }
