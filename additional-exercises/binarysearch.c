@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <math.h>
 
 // this program is th for the binary seraching algorithm
 /*
@@ -51,25 +51,40 @@ int main(void){
 }
 
 void binary_search_algorithm(int array[], int main_length, int search_element){
+    printf("\nSearching in array:\t");
+    for(int i = 0; i<main_length; i++){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
     int length = main_length - 1;
-    int mid_point = length/2, mid_element = array[mid_point]; // getting the middle element
-    // I used the do-while loop because I want the program to run the first time without checking that condition
-    do {
-        if (mid_element == search_element){
-            printf("\nSearch element, %d, found at index, %d", search_element, mid_point);
-            break;
+
+    // getting the middle element and the mid point
+    int mid_point = length/2;
+    int mid_element = array[mid_point]; 
+    
+
+    if (search_element != mid_element){
+        while(search_element != mid_element) {
+            if (mid_element == search_element){
+                printf("\nSearch element, %d, found at index, %d", search_element, mid_point);
+                break;
+            }
+            else if (mid_element > search_element){
+                mid_point = ceil((mid_point-1) / 2);
+                continue;
+            }
+            else if (mid_element < search_element){
+                mid_point = mid_point + ceil(((length - mid_point)/2));
+                continue;
+            }
+            else{
+                printf("\nElement was not found in the array");
+            }
         }
-        else if (mid_element > search_element){
-            mid_point /= 2;
-            continue;
-        }else if (mid_element < search_element){
-            mid_point = mid_point + ((length - mid_point)/2);
-            continue;
-        }
-        else{
-            printf("\nElement was not found in the array");
-        }
-    }while (search_element !== mid_element);
+    }else{
+        printf("\nSearch element, %d, found at index, %d", search_element, mid_point);
+
+    }
 
 }
 void sort_with_bubble_sort(int array[], int length){
@@ -85,16 +100,14 @@ void sort_with_bubble_sort(int array[], int length){
 
     // beginning the sorting algorithm
     for (i = 0; i < length; i++){
-        for (j = 0; j < length; j++){
-            if (j < length-1){
-                element = array[j];
-                check_element = array[j+1];
-                if (element > check_element){
+        for (j = 0; j < length-1; j++){
+            element = array[j];
+            check_element = array[j+1];
+            if (element > check_element){
                 swap = element;
                 array[j] = check_element;
                 array[j+1] = swap;
-                }
-            }
+            } 
         }
     }
 
