@@ -22,7 +22,7 @@
 */
 
 void sort_with_bubble_sort(int array[], int length);
-void binary_search_algorithm(int array[], int length);
+void binary_search_algorithm(int array[], int main_length, int search_element);
 
 int main(void){
     int numbers[] = {5, 2, 9, 1, 7, 4, 8, 3, 6, 10, 30, 45, 200, 67, 93};
@@ -34,14 +34,42 @@ int main(void){
 
     // beginning binary searching
 
+    printf("\n");
+    printf("Enter the Element you want to search in the sorted array: \n");
+    for (i = 0; i < length; i++){
+        printf("%d ", numbers[i]);
+    }
+    int search_element;
+    printf("\nEnter number: ");
+    scanf("%d", &search_element);
+
+    // running the search algorithm.....
+    printf("\n========  SEARCHING ........ ==========");
+    binary_search_algorithm(numbers, length, search_element);
 
     return 0;
 }
 
-void binary_search_algorith(int array[], int length){
-    int mid_element = length/2; // getting the middle element
-    
-
+void binary_search_algorithm(int array[], int main_length, int search_element){
+    int length = main_length - 1;
+    int mid_point = length/2, mid_element = array[mid_point]; // getting the middle element
+    // I used the do-while loop because I want the program to run the first time without checking that condition
+    do {
+        if (mid_element == search_element){
+            printf("\nSearch element, %d, found at index, %d", search_element, mid_point);
+            break;
+        }
+        else if (mid_element > search_element){
+            mid_point /= 2;
+            continue;
+        }else if (mid_element < search_element){
+            mid_point = mid_point + ((length - mid_point)/2);
+            continue;
+        }
+        else{
+            printf("\nElement was not found in the array");
+        }
+    }while (search_element !== mid_element);
 
 }
 void sort_with_bubble_sort(int array[], int length){
