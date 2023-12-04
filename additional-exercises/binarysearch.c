@@ -65,6 +65,7 @@ void binary_search_algorithm(int array[], int main_length, int search_element){
 
     if (search_element != mid_element){
         while(search_element != mid_element) {
+            mid_element = array[mid_point];
             if (mid_element == search_element){
                 printf("\nSearch element, %d, found at index, %d", search_element, mid_point);
                 break;
