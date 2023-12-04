@@ -22,18 +22,28 @@
 */
 
 void sort_with_bubble_sort(int array[], int length);
+void binary_search_algorithm(int array[], int length);
 
 int main(void){
     int numbers[] = {5, 2, 9, 1, 7, 4, 8, 3, 6, 10, 30, 45, 200, 67, 93};
     int length = sizeof(numbers)/sizeof(numbers[0]);
     int i, j, temp;
 
-
+    // sorting with bubble sorting
     sort_with_bubble_sort(numbers, length);
+
+    // beginning binary searching
+
 
     return 0;
 }
 
+void binary_search_algorith(int array[], int length){
+    int mid_element = length/2; // getting the middle element
+    
+
+
+}
 void sort_with_bubble_sort(int array[], int length){
     // getting the size of the array
     // int length = sizeof(array)/sizeof(array[0]);
